@@ -1,0 +1,34 @@
+﻿@model LibraryCars.Models.CarRent
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CarRent</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Car)
+        </dt>
+
+        <dd>
+            @(Model.Car.Brand+" "+Model.Car?.Model)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Client)
+        </dt>
+
+        <dd>
+            @(Model.Client?.FirstName+" "+Model.Client?.LastName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CarRentId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

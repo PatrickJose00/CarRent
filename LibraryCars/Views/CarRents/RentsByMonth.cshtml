@@ -1,0 +1,33 @@
+﻿@model LibraryCars.Models.CarRent
+
+@{
+    ViewBag.Title = "RentsByMonth";
+}
+
+<h2>RentsByMonth</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    @Html.DropDownListFor(m => m.MonthNumber, new SelectList(Model.months, "Number", "Name", Model.MonthNumber), "Select Month", new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.MonthNumber, "", new { @class = "text-danger" })
+    <br />
+    <br />
+    <input type="submit" value="Check" class="btn btn-default" />
+}
+
+@if (ViewBag.total != null) // só apresenta mensagem se tiver sido selecionado um numero, se foi slecionado : mostra total da viewbag
+{<br />
+
+    <p><strong>@ViewBag.total</strong> rented cars in the selected month.</p>
+}
+@if (ViewBag.priceSum != null)
+{<br />
+
+<p><strong>@ViewBag.priceSum</strong> total price.</p>
+}
